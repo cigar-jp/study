@@ -74,11 +74,11 @@ client:
       - { src: 'https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.js' }
       - { src: 'https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/locales/ja/faker.ja.js' }
       # firebase
-      - { src: 'https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js' }
-      - { src: 'https://www.gstatic.com/firebasejs/5.10.1/firebase-auth.js' }
-      - { src: 'https://www.gstatic.com/firebasejs/5.10.1/firebase-database.js' }
-      - { src: 'https://www.gstatic.com/firebasejs/5.10.1/firebase-firestore.js' }
-      - { src: 'https://www.gstatic.com/firebasejs/5.10.1/firebase-storage.js' }
+      - { src: 'https://www.gstatic.com/firebasejs/7.9.3/firebase-app.js' }
+      - { src: 'https://www.gstatic.com/firebasejs/7.9.3/firebase-auth.js' }
+      - { src: 'https://www.gstatic.com/firebasejs/7.9.3/firebase-database.js' }
+      - { src: 'https://www.gstatic.com/firebasejs/7.9.3/firebase-firestore.js' }
+      - { src: 'https://www.gstatic.com/firebasejs/7.9.3/firebase-storage.js' }
       # polyfill
       - { src: https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver }
       # hammer
@@ -106,12 +106,12 @@ client:
     tokenKey: Authorization
     debug: true
   firebase:
-    apiKey: "AIzaSyCiJjzLD4C5ueJ2wP3UVmdTa7BfiqnWu5Q"
-    authDomain: "chat-rabee-jp.firebaseapp.com"
-    databaseURL: "https://chat-rabee-jp.firebaseio.com"
-    projectId: "chat-rabee-jp"
-    storageBucket: "chat-rabee-jp.appspot.com"
-    messagingSenderId: "50741122756"
+    apiKey: "AIzaSyBoyLefAg9UqJoX8-G1cdG62TqZlKHS2xU"
+    authDomain: "develop-cigar.firebaseapp.com"
+    databaseURL: "https://develop-cigar.firebaseio.com"
+    projectId: "develop-cigar"
+    storageBucket: "develop-cigar.appspot.com"
+    messagingSenderId: "907418914496"
   app:
     ios:
       version: '2.0.0'
