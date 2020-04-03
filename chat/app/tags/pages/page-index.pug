@@ -1,14 +1,23 @@
 page-index
   div.flex.flex-column.h-full
-    module-header
+    //- module-header
     div.h-full.overflow-scroll(ref='body')
-      div.container
-        div.posts
-          div.m16(data-is='item-chat', each='{item in sclazy.items}', item='{item}')
+      div.container.s-full.p25
+        div 新・人狼ゲーム
+        div ワードウルフ
+        div.block.button(each='{item in items}', onclick='{move}') {item.label}
+        
+        //- div.posts
+        //-   div.m16(data-is='item-chat', each='{item in sclazy.items}', item='{item}')
           //- div.text-center.my16(if='{sclazy.isMore()}') loading...
     module-tabbar
 
   script.
+    this.items = [
+      { label: '始める', link: '/player-setting'},
+      { label: '遊び方', link: '/tutorial'},
+    ];
+
     //- this.fetch = async ({app, modules}) => {
     //-   console.log('fetch');
     //-   if (this.posts) return {};
@@ -53,3 +62,9 @@ page-index
       //- var base64 = await app.utils.imageToBase64(faker.image.image());
       //- firebase.storage().ref('hoge/foo').child('test').putString(image, 'base64', {contentType:'image/jpg'});
     });
+
+    this.move = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      app.routeful.go(e.item.item.link);
+    };
