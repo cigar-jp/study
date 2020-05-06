@@ -3,31 +3,36 @@ page-player-setting
     module-header(title='プレイヤー設定', back='{true}')
     div.h-full.overflow-scroll(ref='body')
       div.container.s-full.p25
-        div
+        div.mb30
           div.text-center プレイヤー数
           div.f.fh
-            div(onclick='{decrease}') 左
-            div num
-            div(onclick='{increase}') 右
-          div
-            div(each='{player,index in players}')
-              div.f.fh
-                div 消す
-                input(type='text', placeholder='プレイヤー{index+1}', onclick='{hoge}') 
-                div 名前消す
-
+            div.border(onclick='{decrease}')
+              i.icon-arrow_left
+            div.mx10 {num}
+            div.border(onclick='{increase}')
+              i.icon-arrow_right
+        div.mb30
+          div(each='{player,index in players}')
+            div.f.fh
+              div.border 消す
+              input.border(type='text', placeholder='プレイヤー{index+1}', onclick='{hoge}') 
+              div.border 名前消す
+        div.f.fh
+          atom-next-btn(item='{nextBtn}')
 
   script.
-    this.items = [
-      { label: 'ゲーム設定へ', link: '/game-setting'},
-    ];
-
+    //- デフォルト設定
+    //- 人数
+    this.num = 3;
+    //- プレイヤー名
     this.players = [
       {label: 'プレイヤー'},
       {label: 'プレイヤー'},
       {label: 'プレイヤー'},
     ];
 
+    //- 次へボタン
+    this.nextBtn = {label: 'ゲーム設定へ', link: '/game-setting'};
 
     this.move = (e) => {
       e.preventDefault();
