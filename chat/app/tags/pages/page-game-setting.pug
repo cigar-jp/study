@@ -1,5 +1,29 @@
 page-game-setting
   div.flex.flex-column.h-full
-    module-header(title='ゲーム設定')
+    module-header(title='ゲーム設定', back='{true}')
     div.h-full.overflow-scroll(ref='body')
       div.container.s-full.p25
+        div.mb30
+          div.fs20.bold.text-center.mb10 人数構成
+          div.f.fh
+            div.bg-white.border(onclick='{decrease}')
+              i.icon-arrow_left
+            div.mx10 {num}
+            div.bg-white.border(onclick='{increase}')
+              i.icon-arrow_right
+        div.mb30
+          div.mb10(each='{player,index in players}')
+            div.f.fh
+              //- プレイヤー消す
+              i.icon-close.mr10
+              input.border(type='text', placeholder='プレイヤー{index+1}') 
+              //- プレイヤー名消す
+              //- div.border 名前消す
+        div.f.fh
+          atom-next-btn(item='{nextBtn}')
+
+  script.
+    this.on('mount', () => {
+    //- ローカルからプレイヤー人数取得
+      JSON.parse(localStorage.getItem('player_num'));
+    });

@@ -4,19 +4,21 @@ page-player-setting
     div.h-full.overflow-scroll(ref='body')
       div.container.s-full.p25
         div.mb30
-          div.text-center プレイヤー数
+          div.fs20.bold.text-center.mb10 プレイヤー数
           div.f.fh
-            div.border(onclick='{decrease}')
+            div.bg-white.border(onclick='{decrease}')
               i.icon-arrow_left
             div.mx10 {num}
-            div.border(onclick='{increase}')
+            div.bg-white.border(onclick='{increase}')
               i.icon-arrow_right
         div.mb30
-          div(each='{player,index in players}')
+          div.mb10(each='{player,index in players}')
             div.f.fh
-              div.border 消す
-              input.border(type='text', placeholder='プレイヤー{index+1}', onclick='{hoge}') 
-              div.border 名前消す
+              //- プレイヤー消す
+              i.icon-close.mr10
+              input.border(type='text', placeholder='プレイヤー{index+1}') 
+              //- プレイヤー名消す
+              //- div.border 名前消す
         div.f.fh
           atom-next-btn(item='{nextBtn}')
 
@@ -24,15 +26,21 @@ page-player-setting
     //- デフォルト設定
     //- 人数
     this.num = 3;
+    //- ローカルに保存
+    localStorage.setItem('player_num', JSON.stringify(this.num));
     //- プレイヤー名
     this.players = [
       {label: 'プレイヤー'},
       {label: 'プレイヤー'},
       {label: 'プレイヤー'},
     ];
-
     //- 次へボタン
     this.nextBtn = {label: 'ゲーム設定へ', link: '/game-setting'};
+
+    this.on('mount', () => {
+      //- ローカルに保存
+      //- localStorage.setItem('player_num', JSON.stringify(this.num));
+    });
 
     this.move = (e) => {
       e.preventDefault();
@@ -40,7 +48,16 @@ page-player-setting
       app.routeful.go(e.item.link);
     };
 
-    this.hoge = (e) => {
-      console.log(e.item);
+    //- プレイヤー減らす
+    this.decrease = () => {
+      if(this.num <= 3) return;
+      this.num--;
+      //- ローカルに保存
+      localStorage.setItem('player_num', JSON.stringify(this.num));
     };
 
+    //- プレイヤー増やす
+    this.increase = () => {
+      this.num++;
+      //- ローカルに保存
+      localStorage.setItem('player_num', JSON.stringify(this.num));    };
